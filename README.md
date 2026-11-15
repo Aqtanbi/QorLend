@@ -33,15 +33,28 @@ Contracts in `contracts/`:
 - `MockToken.sol`, `MockOracle.sol`: fake token and fake price feed for tests
 - `ReentrantToken.sol`: malicious token used only in a test of the reentrancy guard
 
+Tests in `test/QorLendPool.test.js` (12 unit tests): roles and parameters, borrowing within 60% LTV, liquidity limit,
+16% interest, repay and withdraw, LTV check on withdrawal, liquidation with 5% bonus, bad debt, pause and access
+control, stale oracle price, reentrancy attack.
+
 Simplifications: one collateral token, one stable unit, simple interest, no supplier interest accounting, no tokenomics.
 
 ## How to run (local network)
 
 ```
 npm install
-npx hardhat test              # runs the 11 unit tests
+npx hardhat test              # runs the 12 unit tests
 npx hardhat run scripts/demo.js   # prints the main use case step by step
 ```
+
+Deploy to a separate local node (useful for the demo video):
+
+```
+npx hardhat node                                          # terminal A: local chain, test accounts, chain id 31337
+npx hardhat run scripts/deploy.js --network localhost     # terminal B: deploys mocks and QorLendPool
+```
+
+The deploy script refuses any network that is not local.
 
 Requires Node.js 18 or newer. The compiler comes from the `solc` npm package, so the first run needs internet only for `npm install`.
 Never put real keys in this repository. Keys belong in a `.env` file, which is listed in `.gitignore`.

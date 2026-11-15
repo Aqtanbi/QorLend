@@ -1,5 +1,69 @@
+# ---- Dependencies ----
 node_modules/
+
+# ---- Hardhat build output ----
 artifacts/
 cache/
+typechain-types/
+coverage/
+coverage.json
+gas-report.txt
+ignition/deployments/chain-31337/
+
+# ---- Secrets: never commit keys (see README) ----
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+keystore/
+mnemonic*.txt
+
+# ---- Office documents, PDFs, spreadsheets, data (report/slides live in Moodle, not in git) ----
+*.doc
+*.docx
+*.odt
+*.rtf
+*.pdf
+*.ppt
+*.pptx
+*.odp
+*.xls
+*.xlsx
+*.xlsm
+*.xlsb
+*.ods
+*.csv
+*.tsv
+~$*
+.~lock.*#
+
+# ---- Archives and media (demo video goes to Google Drive) ----
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+
+# ---- Logs ----
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---- OS / editors ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*.swo
+*~

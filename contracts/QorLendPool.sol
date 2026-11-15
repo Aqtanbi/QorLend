@@ -127,7 +127,10 @@ contract QorLendPool is AccessControl, ReentrancyGuard, Pausable {
         require(p.collateral >= amount, "not enough collateral");
         p.collateral -= amount;
         // the position must stay inside the max LTV after the withdrawal
-        require(p.debt * BPS <= _collateralValue(p.collateral) * MAX_LTV_BPS, "would exceed max LTV");
+        // (a user without debt can always withdraw, even if the oracle is stale)
+        if (p.debt > 0) {
+            require(p.debt * BPS <= _collateralValue(p.collateral) * MAX_LTV_BPS, "would exceed max LTV");
+        }
         collateralToken.safeTransfer(msg.sender, amount);
         emit CollateralWithdrawn(msg.sender, amount);
     }

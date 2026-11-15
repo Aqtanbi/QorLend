@@ -1,0 +1,64 @@
+# Normalise line endings: text files are stored with LF in the repository
+# and checked out with LF on every OS (Windows teammates too).
+* text=auto eol=lf
+
+# ---- Source and config: always LF ----
+*.sol   text eol=lf diff=cpp
+*.js    text eol=lf
+*.cjs   text eol=lf
+*.mjs   text eol=lf
+*.ts    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf diff=markdown
+*.mmd   text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.toml  text eol=lf
+*.txt   text eol=lf
+*.sh    text eol=lf
+.env.example  text eol=lf
+.gitignore    text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+
+# Windows-only scripts need CRLF
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# Lock file: no noisy diffs, no merge attempts
+package-lock.json  text eol=lf -diff linguist-generated=true
+
+# ---- Binary files: no EOL conversion, no text diff, no merge ----
+# (documents and data are also in .gitignore, so they are not uploaded;
+#  these lines only protect them if someone force-adds one with `git add -f`)
+*.doc   binary
+*.docx  binary
+*.odt   binary
+*.rtf   binary
+*.pdf   binary
+*.ppt   binary
+*.pptx  binary
+*.odp   binary
+*.xls   binary
+*.xlsx  binary
+*.xlsm  binary
+*.xlsb  binary
+*.ods   binary
+*.csv   binary
+*.tsv   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.svg   text eol=lf
+*.mp4   binary
+*.mov   binary
+*.zip   binary
+*.7z    binary
+*.gz    binary
+*.tgz   binary
+*.woff  binary
+*.woff2 binary
