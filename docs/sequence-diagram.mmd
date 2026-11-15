@@ -1,0 +1,17 @@
+sequenceDiagram
+    actor Supplier
+    actor Borrower
+    actor Liquidator
+    participant Pool as QorLendPool
+    participant Oracle as Price oracle (mock)
+    Supplier->>Pool: supplyLiquidity(10,000 mUSD)
+    Borrower->>Pool: depositCollateral(100 mCOL)
+    Borrower->>Pool: borrow(550 mUSD)
+    Pool->>Oracle: latestPrice()
+    Oracle-->>Pool: 10 mUSD per mCOL
+    Pool-->>Borrower: 550 mUSD (health factor 1.36)
+    Note over Oracle: Price falls 30% to 7 mUSD
+    Liquidator->>Pool: liquidate(Borrower, debt)
+    Pool->>Oracle: latestPrice()
+    Pool-->>Liquidator: 82.5 mCOL (debt + 5% bonus)
+    Note over Pool: Borrower keeps the remaining 17.5 mCOL
