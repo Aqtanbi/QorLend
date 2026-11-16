@@ -9,7 +9,7 @@ Prototype of the hypothetical project QorLend (Introduction to Finance, Final Pr
 It is a small overcollateralised lending pool written in Solidity. It runs only on the local Hardhat network with
 test accounts. Nothing here is deployed to a public network, and no real cryptocurrency is used.
 
-Demo video (up to 3 minutes): [paste the link here]
+Demo video: https://drive.google.com/file/d/1oCHuyJBilEhi41VL8W0phrKDfDoXvteC/view?usp=sharing
 Testnet contract address: none (local network only)
 
 ## What it does
